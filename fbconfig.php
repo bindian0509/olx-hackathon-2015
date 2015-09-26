@@ -34,33 +34,28 @@ if (isset($session)) {
     $response = $request->execute();
     // get response
     $graphObject = $response->getGraphObject();
-        $kwarr = array();
-   
+    $kwarr = array();
 
-    
+
 //    $fav_ath = $graphObject->getProperty('favorite_athletes');    
 //    $fav_team = $graphObject->getProperty('favorite_teams');    
-    $gender = $graphObject->getProperty('gender');    
-    $inspiration = $graphObject->getProperty('inspirational_people'); 
-    foreach ($inspiration as $spv) {
-        array_push($kwarr, $spv->getProperty('name'));        
-    }
-    $sports = $graphObject->getProperty('sports');   
-    foreach ($sports as $spv) {
-        array_push($kwarr, $spv->getProperty('name'));        
-    }
-    
-    
-    
-    // echo "<pre>";print_r($sports); 
-    // Code to get the 
-    
+    $gender = $graphObject->getProperty('gender');
+    //array_push($kwarr, $gender);
 
-    
-    
-    
-    
-    
+   
+    $sports = $graphObject->getProperty('sports')->asArray();
+    foreach ($sports as $spv) {
+        array_push($kwarr, $spv->name);
+    }
+    $inspiration = $graphObject->getProperty('inspirational_people')->asArray();
+    foreach ($inspiration as $spv) {
+        array_push($kwarr, $spv->name);
+    }
+
+
+    // Code to get the 
+
+
     $fbid = $graphObject->getProperty('id');              // To Get Facebook ID
     $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
     $femail = $graphObject->getProperty('email');    // To Get Facebook email ID

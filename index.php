@@ -32,7 +32,7 @@ error_reporting(E_ERROR);
                     <ul class="nav nav-list">
                         <li> Your recommended Ads from OLX India </li>
                         <?php foreach($_SESSION['KEYWORDS'] as $val) { ?>
-                        <li><?php echo $val; ?></li>
+                        <li class="nav-header"><a href="http://olx.in/all-results/q-<?php echo $val;?>">     <?php echo $val; ?></a></li>
                         <?php }?>
                     </ul>
                 </div>
